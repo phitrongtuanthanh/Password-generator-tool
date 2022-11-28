@@ -92,7 +92,8 @@ var upperCasedCharacters = [
 function getPasswordOptions() {
   //use prompt and confirm
   
-  // var passLength = prompt('how many characters your password would have?');
+  
+  var passLength = prompt('how many characters your password would have?');
   // var specChars = confirm ('would you like special characters?');
   // var numb = confirm ('would you like numbers?');
   // var lowercase = confirm ('would you like lowercase?');
