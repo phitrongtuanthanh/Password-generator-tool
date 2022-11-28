@@ -127,7 +127,7 @@ function getPasswordOptions() {
     characterArray = characterArray.concat(upperCasedCharacters);
     }
 
-    let userChoices = [passLength, characterArray];
+    var userChoices = [passLength, characterArray];
     return userChoices;
   }
 
@@ -144,25 +144,28 @@ function getPasswordOptions() {
 
   //return true character types and password length
 // Function for getting a random element from an array
-function getRandom(Array) {
-return Array[Math.floor(math.random()*Array.length)];
+function getRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
 // Function to generate password with user input
 function generatePassword() {
 //call getPasswordOptions and store the return in a variable
-user = getPasswordOptions();
-console.log(userChoices);
+var userOpts = getPasswordOptions();
+// var password = "";
+
+console.log(userOpts.characterArray);
+console.log(userOpts.passLength);
+
+// for (var i=0; i < userOpts.passLength; i++) {
+//   var characterSet = getRandom(userOpts.characterArray);
+//   password = password.concat(getRandom(characterSet));
+// }
+// return password;
 
 //user select uppercase, lowercase and length =12
 //grab a bank of those selected character types - randomly seclected the characters to type (getRandom)
 
-// for (var i=0; i<passwordLength; i++) {
-//   var characterSet = getRandom(characterArray);
-//   var password = password.concate(getRandom(characterSet.value));
-// }
-// console.log(passwordLength);
-// //must return the password
 }
 
 // Get references to the #generate element
