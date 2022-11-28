@@ -102,53 +102,38 @@ function getPasswordOptions() {
   // var uppercase = confirm ('would you like uppercase?');
   
   
-  while (true) {
-    var passLength = prompt('how many characters your password would have? The password must be between 10 and 64 characters');
+    var passLength = prompt('how many characters your password would have? The password must be between 10 and 64 characters.');
     if ((passLength < 10) || (passLength > 64)) {
     alert ('try again!');
-    return getPasswordOptions(); 
-    } else {
-      var passwordLength = passLength;
-      var specChars = confirm('would you like special characters?');
-      if (specChars) {
-        characterArray = characterArray.concat(specialCharacters);
-        var numb = confirm('would you like numbers?');
-        var lowercase = confirm('would you like lowercase?');
-        var uppercase = confirm('would you like uppercase?');
-        alert ('your password is generated successfully!');
-        break;
-      } else {
-        var numb = confirm('would you like numbers?');
-        if (numb) {
+    } 
+    
+    var specChars = confirm('would you like special characters?');
+    if (specChars) {
+      characterArray = characterArray.concat(specialCharacters);
+    } 
+
+    var numb = confirm('would you like numbers?');
+    if (numb) {
           characterArray = characterArray.concat(numericCharacters);
-          var lowercase = confirm('would you like lowercase?');
-          var uppercase = confirm('would you like uppercase?');
-          alert ('your password is generated successfully!');
-          break;
-        } else {
-          var lowercase = confirm('would you like lowercase?');
-          if (lowercase) {
-            characterArray = characterArray.concat(lowerCasedCharacters);
-            var uppercase = confirm('would you like uppercase?');
-            alert ('your password is generated successfully!');
-            break;
-          } else {
-            var uppercase = confirm('would you like uppercase?');
-            if (uppercase) {
-              characterArray = characterArray.concat(upperCasedCharacters);
-              alert ('your password is generated successfully!');
-              break;
-            } else {
-              alert ('try again!');
-              return getPasswordOptions();
-            }
-          }
-        }
-      }
+    } 
+          
+    var lowercase = confirm('would you like lowercase?');
+    if (lowercase) {
+      characterArray = characterArray.concat(lowerCasedCharacters);
+          } 
+          
+    var uppercase = confirm('would you like uppercase?');
+    if (uppercase) {
+    characterArray = characterArray.concat(upperCasedCharacters);
     }
+
+    let userChoices = [passLength, characterArray];
+    return userChoices;
   }
-}
-console.log(characterArray);
+
+
+
+
   //use of character types - specChars, num, LC, UC
   //validate that the user selected at least one character type
   //send user back to select again
@@ -158,8 +143,6 @@ console.log(characterArray);
   // send user back again - can we call a function?
 
   //return true character types and password length
-
-
 // Function for getting a random element from an array
 function getRandom(Array) {
 return Array[Math.floor(math.random()*Array.length)];
@@ -168,7 +151,9 @@ return Array[Math.floor(math.random()*Array.length)];
 // Function to generate password with user input
 function generatePassword() {
 //call getPasswordOptions and store the return in a variable
-userOptions = getPasswordOptions();
+user = getPasswordOptions();
+console.log(userChoices);
+
 //user select uppercase, lowercase and length =12
 //grab a bank of those selected character types - randomly seclected the characters to type (getRandom)
 
