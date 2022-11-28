@@ -1,3 +1,5 @@
+var characterArray = [];
+var passwordLength = [];
 // Array of special characters to be included in password
 var specialCharacters = [
   '@',
@@ -101,13 +103,15 @@ function getPasswordOptions() {
   
   
   while (true) {
-    var passLength = prompt('how many characters your password would have?');
+    var passLength = prompt('how many characters your password would have? The password must be between 10 and 64 characters');
     if ((passLength < 10) || (passLength > 64)) {
     alert ('try again!');
-    break; 
+    return getPasswordOptions(); 
     } else {
+      var passwordLength = passLength;
       var specChars = confirm('would you like special characters?');
       if (specChars) {
+        characterArray = characterArray.concat(specialCharacters);
         var numb = confirm('would you like numbers?');
         var lowercase = confirm('would you like lowercase?');
         var uppercase = confirm('would you like uppercase?');
@@ -116,6 +120,7 @@ function getPasswordOptions() {
       } else {
         var numb = confirm('would you like numbers?');
         if (numb) {
+          characterArray = characterArray.concat(numericCharacters);
           var lowercase = confirm('would you like lowercase?');
           var uppercase = confirm('would you like uppercase?');
           alert ('your password is generated successfully!');
@@ -123,17 +128,19 @@ function getPasswordOptions() {
         } else {
           var lowercase = confirm('would you like lowercase?');
           if (lowercase) {
+            characterArray = characterArray.concat(lowerCasedCharacters);
             var uppercase = confirm('would you like uppercase?');
             alert ('your password is generated successfully!');
             break;
           } else {
             var uppercase = confirm('would you like uppercase?');
             if (uppercase) {
+              characterArray = characterArray.concat(upperCasedCharacters);
               alert ('your password is generated successfully!');
               break;
             } else {
               alert ('try again!');
-              break;
+              return getPasswordOptions();
             }
           }
         }
@@ -141,7 +148,7 @@ function getPasswordOptions() {
     }
   }
 }
-
+console.log(characterArray);
   //use of character types - specChars, num, LC, UC
   //validate that the user selected at least one character type
   //send user back to select again
@@ -154,19 +161,23 @@ function getPasswordOptions() {
 
 
 // Function for getting a random element from an array
-function getRandom() {
+function getRandom(Array) {
+return Array[Math.floor(math.random()*Array.length)];
 }
-var user
 
 // Function to generate password with user input
 function generatePassword() {
 //call getPasswordOptions and store the return in a variable
-
 userOptions = getPasswordOptions();
 //user select uppercase, lowercase and length =12
 //grab a bank of those selected character types - randomly seclected the characters to type (getRandom)
 
-//must return the password
+// for (var i=0; i<passwordLength; i++) {
+//   var characterSet = getRandom(characterArray);
+//   var password = password.concate(getRandom(characterSet.value));
+// }
+// console.log(passwordLength);
+// //must return the password
 }
 
 // Get references to the #generate element
