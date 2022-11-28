@@ -93,7 +93,7 @@ function getPasswordOptions() {
   //use prompt and confirm
   
   
-  var passLength = prompt('how many characters your password would have?');
+  // var passLength = prompt('how many characters your password would have?');
   // var specChars = confirm ('would you like special characters?');
   // var numb = confirm ('would you like numbers?');
   // var lowercase = confirm ('would you like lowercase?');
@@ -102,7 +102,7 @@ function getPasswordOptions() {
   
   while (true) {
     var passLength = prompt('how many characters your password would have?');
-    if ((passLength < 10) || (passLength > 64) || passLength) {
+    if ((passLength < 10) || (passLength > 64)) {
     alert ('try again!');
     break; 
     } else {
