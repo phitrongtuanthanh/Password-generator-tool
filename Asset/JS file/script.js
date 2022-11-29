@@ -1,5 +1,4 @@
-var characterArray = [];
-var passwordLength = [];
+
 // Array of special characters to be included in password
 var specialCharacters = [
   '@',
@@ -92,79 +91,65 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  //use prompt and confirm
-  
-  
-  // var passLength = prompt('how many characters your password would have?');
-  // var specChars = confirm ('would you like special characters?');
-  // var numb = confirm ('would you like numbers?');
-  // var lowercase = confirm ('would you like lowercase?');
-  // var uppercase = confirm ('would you like uppercase?');
-  
-  
-    var passLength = prompt('how many characters your password would have? The password must be between 10 and 64 characters.');
-    if ((passLength < 10) || (passLength > 64)) {
-    alert ('try again!');
-    } 
-    
-    var specChars = confirm('would you like special characters?');
-    if (specChars) {
-      characterArray = characterArray.concat(specialCharacters);
-    } 
 
-    var numb = confirm('would you like numbers?');
-    if (numb) {
-          characterArray = characterArray.concat(numericCharacters);
-    } 
-          
-    var lowercase = confirm('would you like lowercase?');
-    if (lowercase) {
-      characterArray = characterArray.concat(lowerCasedCharacters);
-          } 
-          
-    var uppercase = confirm('would you like uppercase?');
-    if (uppercase) {
-    characterArray = characterArray.concat(upperCasedCharacters);
-    }
+  // Set up global array of potential password characters based on user's choice
+  var characterArray = [];
 
-    var userChoices = [passLength, characterArray];
-    return userChoices;
+  // Confirm and promt to clarify customer options.
+  var passLength = prompt('how many characters your password would have? The password must be between 10 and 64 characters.');
+  //Alert if the password length is out of the range.
+  if ((passLength < 10) || (passLength > 64)) {
+    alert('Please choose a number in the range 10-64.');
+    return getPasswordOptions();
   }
 
+  var specChars = confirm('would you like special characters?');
+  if (specChars) {
+    characterArray = characterArray.concat(specialCharacters);
+  }
 
+  var numb = confirm('would you like numbers?');
+  if (numb) {
+    characterArray = characterArray.concat(numericCharacters);
+  }
 
+  var lowercase = confirm('would you like lowercase?');
+  if (lowercase) {
+    characterArray = characterArray.concat(lowerCasedCharacters);
+  }
 
-  //use of character types - specChars, num, LC, UC
-  //validate that the user selected at least one character type
-  //send user back to select again
-  
-  //password length
-  //validate At least 10 characters but no more than 64
-  // send user back again - can we call a function?
+  var uppercase = confirm('would you like uppercase?');
+  if (uppercase) {
+    characterArray = characterArray.concat(upperCasedCharacters);
+  }
+//Alert if user did not choose at least one character type. 
+  if (characterArray.length < 1) {
+    alert('Please choose at least one character option.');
+    return getPasswordOptions();
+  }
+//create an object which stores the user's options. 
+  var userChoices = { passLength, characterArray };
+  return userChoices;
+}
 
-  //return true character types and password length
 // Function for getting a random element from an array
-function getRandom(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+function getRandom(array) {
+  return array[Math.floor(Math.random() * array.length)];
 }
 
 // Function to generate password with user input
 function generatePassword() {
-//call getPasswordOptions and store the return in a variable
-var userOpts = getPasswordOptions();
-// var password = "";
 
-console.log(userOpts.characterArray);
-console.log(userOpts.passLength);
+  //Call getPasswordOptions and store the return in a variable
+  var userOpts = getPasswordOptions();
+  var password = "";
 
-// for (var i=0; i < userOpts.passLength; i++) {
-//   var characterSet = getRandom(userOpts.characterArray);
-//   password = password.concat(getRandom(characterSet));
-// }
-// return password;
-
-//user select uppercase, lowercase and length =12
-//grab a bank of those selected character types - randomly seclected the characters to type (getRandom)
+  //Create a for loop to choose EACH character randomly. The selection source is from characterArray. 
+  for (var i = 0; i < userOpts.passLength; i++) {
+    var characterSet = getRandom(userOpts.characterArray);
+    password = password.concat(getRandom(characterSet));
+  }
+  return password;
 
 }
 
