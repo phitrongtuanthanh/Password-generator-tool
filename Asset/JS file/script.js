@@ -121,7 +121,7 @@ function getPasswordOptions() {
   var uppercase = confirm('would you like uppercase?');
   if (uppercase) {
     characterArray = characterArray.concat(upperCasedCharacters);
-    alert ("You have successfully create a password. It would be shown in the box below. Thank you!");
+    alert ("You have successfully created a password. It would be shown in the box below. Thank you!");
   }
 //Alert if user did not choose at least one character type. 
   if (characterArray.length < 1) {
