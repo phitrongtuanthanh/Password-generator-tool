@@ -99,7 +99,7 @@ function getPasswordOptions() {
   var passLength = prompt('how many characters your password would have? The password must be between 10 and 64 characters.');
   //Alert if the password length is out of the range.
   if ((passLength < 10) || (passLength > 64)) {
-    alert('Please choose a number in the range 10-64.');
+    alert('Please choose a number in the range 10-64. Try again!');
     return getPasswordOptions();
   }
 
@@ -121,10 +121,11 @@ function getPasswordOptions() {
   var uppercase = confirm('would you like uppercase?');
   if (uppercase) {
     characterArray = characterArray.concat(upperCasedCharacters);
+    alert ("You have successfully create a password. It would be shown in the box below. Thank you!");
   }
 //Alert if user did not choose at least one character type. 
   if (characterArray.length < 1) {
-    alert('Please choose at least one character option.');
+    alert('Please choose at least one character option. Try again!');
     return getPasswordOptions();
   }
 //create an object which stores the user's options. 
